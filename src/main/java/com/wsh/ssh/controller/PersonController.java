@@ -4,6 +4,7 @@ import com.wsh.ssh.domain.PersonModel;
 import com.wsh.ssh.service.PersonService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestHeader;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
@@ -19,11 +20,10 @@ public class PersonController {
     private PersonService personService;
 
 
-
     @RequestMapping("/saveperson")
-    public String addPerson(PersonModel personModel){
-         personService.addPerson(personModel);
-         return "redirect:main";
+    public String addPerson(PersonModel personModel) {
+        personService.addPerson(personModel);
+        return "redirect:main";
     }
 
     /**
@@ -35,7 +35,7 @@ public class PersonController {
     @RequestMapping(value = "/main")
     public String mian(Map<String, Object> map) {
         map.put("personlist", personService.queryPerson());
-		/*遍历集合，查看查询到的数据
+        /*遍历集合，查看查询到的数据
 		 * List<Person> lists = personService.getPersons();
 		 * Iterator<Person> it = lists.iterator();
 		 * while(it.hasNext()){
@@ -49,6 +49,7 @@ public class PersonController {
     /**
      * 跳转到添加页面
      * savepage.jsp
+     *
      * @return
      */
     @RequestMapping(value = "/addperson")
@@ -59,46 +60,51 @@ public class PersonController {
 
 
     @RequestMapping("/deletePerson")
-    public int deletePerson(String id){
+    public int deletePerson(String id) {
         personService.deletePerson(id);
         return 0;
     }
 
     @RequestMapping("/updatePerson")
-    public int updatePerson(PersonModel personModel){
+    public int updatePerson(PersonModel personModel) {
         personService.updatePerson(personModel);
         return 0;
     }
-
     @RequestMapping("/getPersons")
     @ResponseBody
-    public List<PersonModel> queryPerson(){
+    public List<PersonModel> queryPerson() {
+
         return personService.queryPerson();
     }
 
     @RequestMapping("/queryPersonById")
     @ResponseBody
-    public PersonModel queryPersonById(String id){
+    public PersonModel queryPersonById(String id) {
         return personService.queryPersonById(id);
     }
 
-    @RequestMapping("/toJSP")
-    public ModelAndView toIndex(){
-        ModelAndView mv = new ModelAndView();
-
-        mv.setViewName("main");
-
-        return mv;
-
+    @RequestMapping("toHtml")
+    public String toHtml() {
+        return "test_html";
     }
 
-    @RequestMapping("/toHtml")
-    public ModelAndView toHtml(){
-        ModelAndView mv = new ModelAndView();
-
-        mv.setViewName("test_html");
-
-        return mv;
-
-    }
+//    @RequestMapping("/toJSP")
+//    public ModelAndView toIndex(){
+//        ModelAndView mv = new ModelAndView();
+//
+//        mv.setViewName("main");
+//
+//        return mv;
+//
+//    }
+//
+//    @RequestMapping("/toHtml")
+//    public ModelAndView toHtml(){
+//        ModelAndView mv = new ModelAndView();
+//
+//        mv.setViewName("test_html");
+//
+//        return mv;
+//
+//    }
 }

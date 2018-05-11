@@ -12,7 +12,7 @@
   </head>
   <body>
 
-  <td align="right" > <a href="${pageContext.request.contextPath}/person/toJSP">查询</a></td>
+  <td align="right" > <a href="${pageContext.request.contextPath}/person/main">查询</a></td>
   <td align="right" > <a href="${pageContext.request.contextPath}/person/toHtml">html</a></td>
   </body>
 </html>

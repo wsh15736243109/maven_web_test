@@ -1,0 +1,8 @@
+target/
+.idea/
+.idea/workspace.xml
+.DS_Store
+upload/
+src/main/webapp/upload/
+logs
+/out
