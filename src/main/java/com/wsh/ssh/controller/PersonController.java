@@ -4,8 +4,10 @@ import com.wsh.ssh.domain.PersonModel;
 import com.wsh.ssh.service.PersonService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestHeader;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -83,9 +85,40 @@ public class PersonController {
         return personService.queryPersonById(id);
     }
 
+    /**
+     * 跳转到更新页面，回显数据
+     * editpage.jsp
+     * @param id
+     * @param model 使用的Model保存回显数据
+     * @return
+     */
+    @RequestMapping(value = "/doupdate")
+    public String doupdate(@RequestParam(value = "id") String id, Model model) {
+        model.addAttribute("person", personService.queryPersonById(id));
+        return "editpage";
+    }
+
+    /**
+     * 删除一条数据
+     *
+     * @param id
+     * @return
+     */
+    @RequestMapping(value = "/deletePersonById")
+    public String deletePersonById(@RequestParam(value = "id") String id) {
+        System.out.println("删除单个");
+        personService.deletePerson(id);
+        return "redirect:main";
+    }
+
     @RequestMapping("toHtml")
     public String toHtml() {
         return "test_html";
+    }
+
+    @RequestMapping("tojQueryHtml")
+    public String tojQueryHtml() {
+        return "jQueryMobileHtml";
     }
 
 //    @RequestMapping("/toJSP")

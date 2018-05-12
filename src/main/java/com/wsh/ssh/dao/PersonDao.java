@@ -32,7 +32,7 @@ public class PersonDao {
     }
 
     public void deletePersonById(String id) {
-        String deleteSql = "delete from wsh_person where id = ? ";
+        String deleteSql = "delete from PersonModel where id = ? ";
         this.getSession().createQuery(deleteSql).setParameter(0, id).executeUpdate();
     }
 
@@ -45,7 +45,7 @@ public class PersonDao {
     }
 
     public PersonModel queryPersonById(String id) {
-        return (PersonModel)this.getSession().createQuery("from wsh_person where id = ?").setParameter(0,id).uniqueResult();
+        return (PersonModel)this.getSession().createQuery("from PersonModel where id = ?").setParameter(0,id).uniqueResult();
     }
 
 }

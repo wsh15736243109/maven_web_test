@@ -7,12 +7,14 @@
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
-  <head>
+<head>
     <title>$Title$</title>
-  </head>
-  <body>
+</head>
+<body>
 
-  <td align="right" > <a href="${pageContext.request.contextPath}/person/main">查询</a></td>
-  <td align="right" > <a href="${pageContext.request.contextPath}/person/toHtml">html</a></td>
-  </body>
+<td align="right"><a href="${pageContext.request.contextPath}/person/main">查询</a></td>
+<td align="right"><a href="${pageContext.request.contextPath}/person/toHtml">html</a></td>
+<td align="right"><a href="${pageContext.request.contextPath}/person/tojQueryHtml">tojQueryHtml</a></td>
+
+</body>
 </html>

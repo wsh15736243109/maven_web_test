@@ -9,8 +9,13 @@
     <style type="text/css">
         .table1 {
             border: 1px solid #ddd;
-            width: 900px;
+            width: 100%;
 
+        }
+
+        .th{
+            max-lines: 1;
+            
         }
 
         thead {
@@ -20,7 +25,7 @@
     </style>
 </head>
 <body>
-<table border="0" width="900px">
+<table border="0" width="100%">
     <tr>
         <td align="center" style="font-size:24px; color:#666"> 人员管理</td>
     </tr>
@@ -33,7 +38,7 @@
     <thead>
     <tr>
         <th width="300">姓名</th>
-        <th width="300">身份证号</th>
+        <th width="300" class="th">身份证号</th>
         <th width="300">电话</th>
         <th width="300">地址</th>
         <th width="300">编辑</th>
