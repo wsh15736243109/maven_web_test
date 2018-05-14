@@ -36,15 +36,39 @@
 //                alert("jsonData:" + jsonData)
 //            })
 //            alert("点击事件了")
-            $.getJSON("http://127.0.0.1:8083/person/getPersons", function (result) {
-//                $.each(result, function (i, field) {
-//                    $("p").append(field + " ");
-//                });
-                alert("result" + result)
-            });
+//            $.getJSON("http://127.0.0.1:8083/person/getPersons", function (result) {
+////                $.each(result, function (i, field) {
+////                    $("p").append(field + " ");
+////                });
+//                alert("result" + result)
+//            });
+//            $.ajax
+
+            $.ajax({
+                url: "http://127.0.0.1:8083/person/getPersons",
+                type: "get",
+                success: function (data) {
+//                    alert(data);//---->弹出[object Object],[object Object],[object Object][object Object],[object Object],[object Object]……后台传过来几条singleHistoryData对象就打印几个json对象：[object Object]
+                    var str = ""
+                    for (var i = 0; i < data.length; i++) {
+                        var id = data[i]['id'];
+                        var name = data[i]['name'];
+                        var address = data[i]['address'];
+                        var phone = data[i]['phone'];
+                        var idCard = data[i]['idCard'];
+                        str += name
+                    }
+                    alert(str);
+                },
+                error: function (data) {
+//                    for (var i = 0; i < data.length; i++) {
+//                        var id = data[i]['url'];
+//                    }
+                    alert("失败了" +  data['statusText'])
+                }
+            })
         })
     })
-
 
 
 </script>
