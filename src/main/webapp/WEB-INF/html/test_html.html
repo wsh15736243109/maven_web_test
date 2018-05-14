@@ -1,9 +1,9 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8" >
+    <meta charset="UTF-8">
     <title>angular.js+SpringMVC</title>
-
+    <script src="http://libs.baidu.com/jquery/1.9.0/jquery.js" type="text/javascript"></script>
 </head>
 
 <body>
@@ -11,22 +11,39 @@
 <button id="search">查询</button>
 
 <script>
-    //    document.getElementById("search").onclick = function () {
-    //        var request = new XMLHttpRequest()
-    //        request.open("GET", "http://127.0.0.1:8083/person/getPersons")
-    //        request.setRequestHeader("Access-Control-Allow-Origin", "*")
-    ////        request.setRequestHeader("","");
-    //        request.send()
-    //        request.onreadystatechange=function () {
-    //            if (request.readyState === 4) {
-    //                if (request.status === 200) {
-    //                    alert(request.responseText)
-    //                }else{
-    //                    alert("发生错误："+request.status)
+    //        document.getElementById("search").onclick = function () {
+    //            var request = new XMLHttpRequest()
+    //            request.open("GET", "http://127.0.0.1:8083/person/getPersons")
+    //            request.setRequestHeader("Access-Control-Allow-Origin", "*")
+    //    //        request.setRequestHeader("","");
+    //            request.send()
+    //            request.onreadystatechange=function () {
+    //                if (request.readyState === 4) {
+    //                    if (request.status === 200) {
+    //                        alert(request.responseText)
+    //                    }else{
+    //                        alert("发生错误："+request.status)
+    //                    }
     //                }
     //            }
     //        }
-    //    }
+
+
+    $(document).ready(function () {
+        $("#search").click(function () {
+//            $.getJson("http://127.0.0.1:8083/person/getPersons", function (data) {
+//                var jsonData = (data)
+//                alert("jsonData:" + jsonData)
+//            })
+//            alert("点击事件了")
+            $.getJSON("http://127.0.0.1:8083/person/getPersons", function (result) {
+//                $.each(result, function (i, field) {
+//                    $("p").append(field + " ");
+//                });
+                alert("result" + result)
+            });
+        })
+    })
 
 
 
